@@ -1,34 +1,45 @@
-#include <stdio.h>
- 
-  struct cuadrilatero{
+#include<stdio.h>
 
-     int base;
+struct cuad 
+{
+	int alt ; 
+	int bas ; 
+};
 
-     float altura;
 
-   };
- 
-int main(){
-   struct cuadrilatero cuadrilatero1;
+int main (){
+	char car = '*' , car_2 = '-', car_3 = '+' ;
+	int fil = 0 ; 
+	int col = 0 ; 
+	struct cuad cuad1;
+	cuad1.bas = 8 ;    
+	cuad1.alt = 20 ;    
+	for(fil = 1 ; fil <= cuad1.bas ; fil = fil +1)
+	{
+	
+		for(col = 1 ; col <= cuad1.alt ; col = col +1 )
+		{
+			if(fil == 1 || fil == cuad1.bas  ){
+				if(fil == 1 && col ==1 || fil ==1 && col== cuad1.alt || fil == cuad1.bas && col ==1 || fil == cuad1.bas && col == cuad1.alt )
+				{
+					printf("%c", car_3);
+				}else {
+					printf("%c", car_2);
+				}	
+		}else{
+			if( col == 1|| col == cuad1.alt )
+			{
+				printf("%c",car);
+			}else{
+				printf(" ");
+			}
+				
+		}
+	
+		} printf("\n");
+		
+	}
+	return 0; 
+}
+	
 
-   struct cuadrilatero cuadrilatero2;
-
-   cuadrilatero1.base = 10;
-
-   cuadrilatero1.altura = 15.123465;
-
-   cuadrilatero2.base = 15467;
-
-   cuadrilatero2.altura = 2346.27537;
-
-   printf("Base del cuadrilatero1: %d \n", cuadrilatero1.base);
-
-   printf("Altura del cuadrilatero1: %.4f \n", cuadrilatero1.altura);
-
-   printf("Base del cuadrilatero2: %d \n", cuadrilatero2.base);
-
-   printf("Altura del cuadrilatero2: %.4f \n", cuadrilatero2.altura);
- 
-  return 0;
-
- }
