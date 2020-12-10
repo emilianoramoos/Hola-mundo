@@ -76,7 +76,7 @@ char** split_str(char* str, const char a_delim) {
 		assert(idx == (count - 1));
 		*(_str + idx) = '\0';
 	} else {
-		printf("Error. No se pudo reservar espacio en memoria.\n");
+		printf(" No se pudo reservar espacio en memoria.\n");
 		exit(EXIT_FAILURE);
 	}
 	
@@ -102,7 +102,7 @@ alumno register_student(char** tokens) {
 void load_data(const char* _filename, alumno* alumnos) {
 	FILE* stream = fopen(_filename,"r");
 	if(!stream) {
-		printf("Error. Hubo un problema al abrir el archivo %s en modo lectura.\n",_filename);
+		printf("Hubo un error al abrir el archivo %s en modo lectura.\n",_filename);
 		exit(EXIT_FAILURE);
 	}
 	size_t idx = 0;
@@ -276,13 +276,13 @@ void print_arrayCalifP(calificacionP* calificaciones, const size_t tam) {
 }
 
 int main() {
-	const size_t TAM = get_total_lines_file("csv.csv") - 1;
+	const size_t TAM = get_total_lines_file("datos.csv") - 1;
 	alumno alumnos[TAM];
 	calificacionP calificacionesP[7];
 	grupo g = {0,NULL,0.0};
 	size_t i = 0, j = 0;
 
-	load_data("csv.csv",alumnos);
+	load_data("datos.csv",alumnos);
 
 	for(i = 0; i < TAM; ++i) {
 		alumnos[i].promedio = round(calcular_promedioFinal(alumnos[i].calif,7));
