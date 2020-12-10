@@ -28,7 +28,7 @@ typedef struct grupo {
 unsigned int get_total_lines_file(const char* _filename) {
 	FILE* stream = fopen(_filename,"r");
 	if(!stream) {
-		printf("Error. Hubo un problema al abrir el archivo %s en modo lectura.\n",_filename);
+		printf("Hubo un error al abrir el archivo %s en modo lectura.\n",_filename);
 		exit(EXIT_FAILURE);
 	}
 	unsigned int n_lines = 0;
@@ -134,7 +134,7 @@ void load_data(const char* _filename, alumno* alumnos) {
 void saveData_at_file(const char* _namefile, alumno* alumnos, calificacionP* calificaciones, grupo g, const size_t tamA, const size_t tamC) {
 	FILE* stream = fopen(_namefile,"w");
 	if(!stream) {
-		printf("Error. No se pudo abrir el archivo %s en modo escritura.\n",_namefile);
+		printf(" No se pudo abrir el archivo %s en modo escritura.\n",_namefile);
 		exit(EXIT_FAILURE);
 	}
 	size_t i = 0, j = 0;
@@ -186,7 +186,7 @@ void ini_CalifParcial(unsigned* n_alumR, double* prom, int** califAlumP, const s
 	*prom = 0.0;
 	*califAlumP = (int*) malloc(sizeof(int)*(size_t)tam);
 	if(!(*califAlumP)) {
-		printf("Error. No se pudo reservar espacio en memoria\n");
+		printf(" No se pudo reservar espacio en memoria\n");
 		exit(EXIT_FAILURE);
 	}
 	size_t k = 0;
@@ -220,7 +220,7 @@ unsigned int NalumnosReprobados_P(int* califAlumnosP, const size_t tam) {
 void ini_califGrupo(grupo* g, alumno* alumnos, const size_t tam) {
 	g->califAlumnos = (int*) malloc(sizeof(int)*(size_t)tam);
 	if(!g->califAlumnos) {
-		printf("Error. No se pudo reservar espacion en memoria\n");
+		printf(" No se pudo reservar espacion en memoria\n");
 		exit(EXIT_FAILURE);
 	}
 	size_t i = 0;
@@ -299,7 +299,7 @@ int main() {
 	g.promedio = round(calcular_promGrupo(g.califAlumnos,TAM));
 	g.n_alumnosR = NAlumnosReprobados_G(g.califAlumnos,TAM);
 
-	saveData_at_file("salida.csv",alumnos,calificacionesP,g,TAM,7);
+	saveData_at_file("resultado.csv",alumnos,calificacionesP,g,TAM,7);
 
 	print_arrayAlumnos(alumnos,TAM);
 	printf("\n");
